@@ -1,0 +1,22 @@
+#wraper{
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+a{
+    color: #000ff;
+}
+.catlinks{
+    display: block;
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border:  1px solid #000000;
+    margin-bottom: 5px;
+    background-color: #cccccc;
+    color: #000000;
+}
+
+.catlinks:hover{
+    background-color: #dddddd;
+}
