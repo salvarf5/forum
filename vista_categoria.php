@@ -1,20 +1,22 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>Foro - Categorias</title>
-  <link rel="stylesheet" type="text/css" href="/foro/estilos/style.css"/>
-  <link rel="stylesheet" type="text/css" href="/foro/estilos/style.php"/>
+    <meta charset="utf-8">
+    <title>Foro - Categorias</title>
+    <link rel="stylesheet" type="text/css" href="/foro/estilos/style.css" />
+    <link rel="stylesheet" type="text/css" href="/foro/estilos/style.php" />
 </head>
-	
-	<body>
-		<div id="wraper">
-			<h1 align="center">Salvador - Foro</h1><br />
-<?php
+
+<body>
+    <div id="wraper">
+        <h1 align="center">Salvador - Foro</h1>
+        <br />
+        <?php
 session_start();
 ?>
-<div id="iniciosesion">
-<?php
+            <div id="iniciosesion">
+                <?php
 if (!isset($_SESSION['uid'])){
     echo "<form action='/foro/usuarios/login_parse.php' method='post'>
     <p>Usuario: <input type='text' name='username' pattern='[A-Za-z0-9_-]{1,15}' required autocomplete='off'/> &nbsp;
@@ -29,10 +31,10 @@ if (!isset($_SESSION['uid'])){
     '/foro/usuarios/logout_parse.php'\" /></p>";
 }
 ?>
-</div>
-<hr />
-<div id="categorias">
-<?php
+            </div>
+            <hr />
+            <div id="categorias">
+                <?php
 include_once("../conexion.php");
 $cid = $_GET['cid'];
  $row_cnt = "";
@@ -68,7 +70,7 @@ if (mysqli_num_rows($res) == 1){
         $nombreusuario = $row4['username']; 
         $temas .= "<tr><td><a href='/foro/temas/vista_tema.php?cid=".$cid."&tid=".$tid."' class='catlinks2'>".$titulo."</a><br/><span class='postinfo'>Creado por: <i>".$nombreusuario."</i> el ".$fecha."</span></td><td align='center' class='contar'>".$row_cnt."</td><td align='center' class='contar'>".$visitas."</td></tr>";
         $temas .= "<tr><td colspan='3'><hr/></td></tr>";
-       
+
     }
     $temas .="</table>";
     echo $temas;
@@ -80,9 +82,10 @@ if (mysqli_num_rows($res) == 1){
     echo "<a href='/foro/index.php'> Regresar a la pagina de inicio</a><hr/>";
     echo "<p>Estas intentando ver una categoria que no existe todavia";
 }
-        
+
 ?>
-</div>
-</div>
+            </div>
+    </div>
 </body>
+
 </html>

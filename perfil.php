@@ -1,27 +1,25 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>Foro - Crear Usuario</title>
-  <link rel="stylesheet" type="text/css" href="/foro/estilos/style.php"/>
+    <meta charset="utf-8">
+    <title>Foro - Crear Usuario</title>
+    <link rel="stylesheet" type="text/css" href="/foro/estilos/style.php" />
     <script type="text/javascript">
- 
-function timedMsg()
-{
-var t=setTimeout("document.getElementById('mimsg').style.display='none';",5000);
-}
- 
-</script>
+        function timedMsg() {
+            var t = setTimeout("document.getElementById('mimsg').style.display='none';", 5000);
+        }
+    </script>
 </head>
-	
-	<body>
-		<div id="wraper">
-            <?php echo "<a href='/foro/index.php'>Regresar a la pagina de inicio</a>";?> 
-<?php 
+
+<body>
+    <div id="wraper">
+        <?php echo "<a href='/foro/index.php'>Regresar a la pagina de inicio</a>";?>
+            <?php 
 session_start();
 include_once("../conexion.php");
 require_once('../validaciones.php');
-			
+
 if (isset($_SESSION['uid'])){
 	$errores = array();
 	$usuariolog = $_SESSION['uid'];
@@ -45,7 +43,7 @@ if (isset($_SESSION['uid'])){
 		if (($_POST['usuarionuevo'] ==  $username) && (empty($passnuevo))){
             $mensaje= "No has modificado ningun dato de tu perfil.";
 		    header("location: /foro/index.php?mensaje=$mensaje");
-            
+
         }else{
             if (($_POST['usuarionuevo'] ==  $username) && (!empty($passnuevo))){
                 $sql7 = "UPDATE users SET password = '$nuevopasscifrado' WHERE id = '$usuariolog'";	
@@ -76,7 +74,7 @@ if (isset($_SESSION['uid'])){
      	          $mensaje= "Tus datos de perfil han sido editados satisfactoriamente.";
 		          header("location: /foro/index.php?mensaje=$mensaje");         
                  }
-             
+
         }
                }
         }
@@ -97,40 +95,39 @@ if (isset($_SESSION['uid'])){
 }
 
     ?>
-			<br/>
-			<br/>
-			<?php if ($errores): ?>
-       <span style="color: #f00; text-align:center;">
+                <br/>
+                <br/>
+                <?php if ($errores): ?>
+                    <span style="color: #f00; text-align:center;">
           <?php foreach ($errores as $error): ?>
              <li><?php echo $error?></li>
           <?php endforeach; ?>
        </span>
-    <?php endif; ?>
-<div id="mimsg">
-<p>Si dejas el campo contrase&ntilde;a vacio mantendras por defecto tu contrase&ntilde;a actual</p>
-<script language="JavaScript" type="text/javascript">timedMsg()</script>
-</div>
-<div id="contenido">
-<div id="encabezadoreg">
-<h3>Editar Credenciales</h3>
-<hr />
-</div>
-<form method="post">
-<p>Introduzca el nuevo usuario </p>	
-<input type="text" class="entradas" name="usuarionuevo" value="<?php echo $username; ?>" required/>
-<p>Introduzca la nueva contrase&ntilde;a </p>
-<input type="password" class="entradas" name="passnuevo" value="" autocomplete="new-password" placeholder="Contrase&ntilde;a actual"/>
-<br />
-<input type="submit" name="editardatos" class="entradas" value="Editar"/>
-</form>
+                    <?php endif; ?>
+                        <div id="mimsg">
+                            <p>Si dejas el campo contrase&ntilde;a vacio mantendras por defecto tu contrase&ntilde;a actual</p>
+                            <script language="JavaScript" type="text/javascript">
+                                timedMsg()
+                            </script>
+                        </div>
+                        <div id="contenido">
+                            <div id="encabezadoreg">
+                                <h3>Editar Credenciales</h3>
+                                <hr />
+                            </div>
+                            <form method="post">
+                                <p>Introduzca el nuevo usuario </p>
+                                <input type="text" class="entradas" name="usuarionuevo" value="<?php echo $username; ?>" required/>
+                                <p>Introduzca la nueva contrase&ntilde;a </p>
+                                <input type="password" class="entradas" name="passnuevo" value="" autocomplete="new-password" placeholder="Contrase&ntilde;a actual" />
+                                <br />
+                                <input type="submit" name="editardatos" class="entradas" value="Editar" />
+                            </form>
 
-	<hr />
-<p>Haga clic <a style="color: cornflowerblue;" name="borrar" href="perfil.php?borrar" onclick="return confirm('¿Estas seguro que quieres cerrar la cuenta?')">aqui para cerrar su cuenta.</a></p>
-</div>
-</div>
+                            <hr />
+                            <p>Haga clic <a style="color: cornflowerblue;" name="borrar" href="perfil.php?borrar" onclick="return confirm('¿Estas seguro que quieres cerrar la cuenta?')">aqui para cerrar su cuenta.</a></p>
+                        </div>
+    </div>
 </body>
+
 </html>
-   
-
-
-

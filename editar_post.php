@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>Editar Post</title>
-  <link rel="stylesheet" type="text/css" href="/foro/estilos/style.php"/>
+    <meta charset="utf-8">
+    <title>Editar Post</title>
+    <link rel="stylesheet" type="text/css" href="/foro/estilos/style.php" />
 </head>
 <?php
 session_start();
@@ -30,7 +31,7 @@ if (isset($_SESSION['uid'])){
             alert("Post editado con exito.");
             location="/foro/temas/vista_tema.php?cid='.$cid.'&tid='.$tid.'";
             </script>';
-            
+
         }
     }else{
         echo "Accion denegada. No eres el creador de este post.";
@@ -40,4 +41,5 @@ if (isset($_SESSION['uid'])){
     echo "Debes iniciar sesion para editar este post.";
 }
 ?>
+
 </html>
